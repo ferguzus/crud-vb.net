@@ -36,6 +36,7 @@
             txtAge.Clear()
             radMale.Checked = False
             radFemale.Checked = False
+            dtBday.Value = New DateTimePicker().Value
             cmbProgram.Text = ""
             loadTable()
 
@@ -140,6 +141,7 @@
             txtAge.Clear()
             radMale.Checked = False
             radFemale.Checked = False
+            dtBday.Value = New DateTimePicker().Value
             cmbProgram.Text = ""
         Catch ex As Exception
 
