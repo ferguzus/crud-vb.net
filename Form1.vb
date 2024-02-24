@@ -55,29 +55,32 @@
             data.Clear()
             adapter.Fill(data, "List")
 
-            txtName.DataBindings.Add("Text", data, "List.FNAME")
-            txtName.DataBindings.Clear()
+            If data.Tables("List").Rows.Count > 0 Then
 
-            txtAge.DataBindings.Add("Text", data, "List.AGE")
-            txtAge.DataBindings.Clear()
+                txtName.DataBindings.Add("Text", data, "List.FNAME")
+                txtName.DataBindings.Clear()
 
-            txtGenderBind.DataBindings.Add("Text", data, "List.GENDER")
-            txtGenderBind.DataBindings.Clear()
-            genderBind = txtGenderBind.Text
+                txtAge.DataBindings.Add("Text", data, "List.AGE")
+                txtAge.DataBindings.Clear()
 
-            If genderBind = "Male" Then
-                radMale.Checked = True
-            ElseIf genderBind = "Female" Then
-                radFemale.Checked = True
-            End If
+                txtGenderBind.DataBindings.Add("Text", data, "List.GENDER")
+                txtGenderBind.DataBindings.Clear()
+                genderBind = txtGenderBind.Text
 
-            dtBday.DataBindings.Add("Value", data, "List.BDAY")
-            dtBday.DataBindings.Clear()
+                If genderBind = "Male" Then
+                    radMale.Checked = True
+                ElseIf genderBind = "Female" Then
+                    radFemale.Checked = True
+                End If
 
-            cmbProgram.DataBindings.Add("Text", data, "List.COURSE")
-            cmbProgram.DataBindings.Clear()
+                dtBday.DataBindings.Add("Value", data, "List.BDAY")
+                dtBday.DataBindings.Clear()
 
-            If txtID.Text = "" Then
+                cmbProgram.DataBindings.Add("Text", data, "List.COURSE")
+                cmbProgram.DataBindings.Clear()
+
+            Else
+
                 txtName.Clear()
                 txtAge.Clear()
                 txtGenderBind.Clear()
@@ -86,7 +89,13 @@
 
                 dtBday.Value = New DateTimePicker().Value
                 cmbProgram.Text = ""
+
             End If
+
+
+
+
+
             con.Close()
 
         Catch ex As Exception
